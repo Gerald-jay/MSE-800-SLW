@@ -20,7 +20,7 @@ def rainfall_analysis():
 
     #The days (by index) where the rainfall was more than 5 mm.
     index_rainfall = np.where(rainfalls > 5)
-    print("Indexes where the rainfall > 5 mm: ", index_rainfall[0])
+    print("Indces where the rainfall > 5 mm: ", index_rainfall[0])
 
     #Calculate the 75th percentile and identify values above it
     calculate_rainfall = np.percentile(rainfalls, 75)
