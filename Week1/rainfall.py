@@ -26,8 +26,8 @@ def rainfall_analysis():
     r75 = np.percentile(rainfalls, 75)
     print(f"The 75th percentile rainfall {r75:.2f}mm")
 
-    values_rainfall = rainfalls[rainfalls > r75]
-    print("Values above the 75th percentile:", values_rainfall)
+    values_75 = rainfalls[rainfalls > r75]
+    print("Values above the 75th percentile:", values_75)
 
 if __name__ == "__main__":
     ans = rainfall_analysis()
