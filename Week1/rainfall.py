@@ -23,10 +23,10 @@ def rainfall_analysis():
     print("Indices where the rainfall > 5 mm: ", index_rainfall[0])
 
     #Calculate the 75th percentile and identify values above it
-    calculate_rainfall = np.percentile(rainfalls, 75)
-    print(f"The 75th percentile rainfall {calculate_rainfall:.2f}mm")
+    r75 = np.percentile(rainfalls, 75)
+    print(f"The 75th percentile rainfall {r75:.2f}mm")
 
-    values_rainfall = rainfalls[rainfalls > calculate_rainfall]
+    values_rainfall = rainfalls[rainfalls > r75]
     print("Values above the 75th percentile:", values_rainfall)
 
 if __name__ == "__main__":
