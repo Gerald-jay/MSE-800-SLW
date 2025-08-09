@@ -1,5 +1,6 @@
 class StringManipulator:
-    def __init__(self, text):
+
+    def set_text(self, text):
         self.text = text
 
     def find_character(self, char):
@@ -12,7 +13,8 @@ class StringManipulator:
         print("Uppercase string:", self.text.upper())
 
 def main():
-    name = StringManipulator("example")
+    name = StringManipulator()
+    name.set_text("example")
 
     result = name.find_character("x")
     print("Index of char: ", result)
