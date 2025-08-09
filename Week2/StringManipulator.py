@@ -1,3 +1,8 @@
+# NOTE:
+# The __init__ method is helpful because it automatically initialises object attributes
+# when the object is created, we don’t need to call a separate method like set_text().
+# This makes the code cleaner, reduces the risk of forgetting initialisation,
+# and ensures the object is always ready to use after creation.
 class StringManipulator:
 
     def set_text(self, text):
