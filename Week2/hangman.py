@@ -15,7 +15,7 @@ def play():
     guessed_letters = set()
     lives = 5
 
-    print("Let's get strat...")
+    print("Let's get started...")
     print("You have", lives, "lives")
     #print("word: ", word)
     print("word_letters: ", word_letters)
