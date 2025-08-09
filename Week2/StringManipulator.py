@@ -11,10 +11,14 @@ class StringManipulator:
     def convert_to_uppercase(self):
         print("Uppercase string:", self.text.upper())
 
-name = StringManipulator("example")
+def main():
+    name = StringManipulator("example")
 
-result = name.find_character("x")
-print("Index of char: ", result)
+    result = name.find_character("x")
+    print("Index of char: ", result)
 
-name.print_length()
-name.convert_to_uppercase()
+    name.print_length()
+    name.convert_to_uppercase()
+
+if __name__ == "__main__":
+    main()
