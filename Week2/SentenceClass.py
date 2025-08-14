@@ -7,7 +7,7 @@ class sentenceClass:
         return len(words)
     
     def input_sentence(self):
-        sentence = input("Plese input your setence:")
+        sentence = input("Please input your setence:")
         if not sentence.strip():
             print("You entered an empty sentence.")
             self.input_sentence()
