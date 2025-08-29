@@ -23,6 +23,6 @@ class Staff(Academic):
         self.pay = pay
 
 if __name__ == "__main__":
-    s = Student("Alice", "Wellington", 20, "S001", "Excellent")
+    s = Student("Eason", "Wellington", 18, "S123", "Excellent")
     a = Academic("Dr. Bob", "Auckland", 45, "A101", "TX001", 90000)
     st = Staff("Carol", "Christchurch", 35, "ST55", "TX002", 35, 500)
