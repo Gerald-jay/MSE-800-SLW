@@ -7,7 +7,6 @@ class Color:
             "name": self.name
         }
 
-
 class TransparentColor(Color):
     def __init__(self, name, transparency):
         super().__init__(name)
