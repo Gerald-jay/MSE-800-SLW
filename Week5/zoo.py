@@ -3,7 +3,9 @@ class Color:
         self.name = name
 
     def get_color(self):
-        return self.name
+        return{
+            "name": self.name
+        }
 
 
 class TransparentColor(Color):
@@ -13,7 +15,10 @@ class TransparentColor(Color):
 
     #override the parent cass method
     def get_color(self):
-        return f"Color: {self.name}, TransparentColor:{self.transparency}%"
+        return{
+            "name": self.name,
+            "transparency": self.transparency
+        }
 
 class Animal:
     def __init__(self, species, color: Color):
@@ -26,11 +31,11 @@ class Animal:
 def main():
     color = Color("Grayish-Black")
     elephant = Animal("Elephant", color)
-    print(f"Animal: {elephant.get_species()}, Color: {elephant.color.get_color()}")
+    print(f"Animal: {elephant.get_species()}, Color: {elephant.color.get_color()['name']}")
 
     transparent_color = TransparentColor("Brown", 65)
     kiwi = Animal("Kiwi", transparent_color)
-    print(f"Animal: {kiwi.get_species()}, Color: {kiwi.color.get_color()}")
+    print(f"Animal: {kiwi.get_species()}, Color: {kiwi.color.get_color()['name']}, TransparentColor: {kiwi.color.get_color()['transparency']}")
 
 if __name__ == "__main__":
     main()
