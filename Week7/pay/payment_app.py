@@ -70,7 +70,7 @@ class PaymentFactory:
             raise ValueError(f"Unknown payment method: {key}")
         return cls._registry[k](**kwargs)
 
-# 注册所有支付方式 register all methods
+# register all methods
 PaymentFactory.register("paypal", PayPalPayment)
 PaymentFactory.register("stripe", StripePayment)
 PaymentFactory.register("creditcard", CreditCardPayment)
@@ -92,13 +92,12 @@ class PaymentGateway:
 
     def process(self, method_key: str, req: PaymentRequest, **init_kwargs) -> PaymentResult:
         method = PaymentFactory.create(method_key, **init_kwargs)
-        # 统一横切关注点可放这里：日志、重试、风控、幂等、metrics... 
         # note that cross-cutting concerns can be handled here: logging, retries, risk control, idempotency, metrics...
         return method.pay(req)
 
 # -------- Demo / client code ----------
 if __name__ == "__main__":
-    gw = PaymentGateway()                     # 单例入口 singleton entry point
+    gw = PaymentGateway()                     # singleton entry point
     req = PaymentRequest(amount=99.0, currency="USD", payer_id="u1001")
 
     print(gw.process("paypal", req, email="buyer@example.com"))
