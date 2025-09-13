@@ -98,7 +98,7 @@ class PaymentGateway:
 # -------- Demo / client code ----------
 if __name__ == "__main__":
     gw = PaymentGateway()                     # singleton entry point
-    req = PaymentRequest(amount=99.0, currency="USD", payer_id="u1001")
+    req = PaymentRequest(amount=99.0, currency="NZD", payer_id="u1001")
 
     print(gw.process("paypal", req, email="buyer@example.com"))
     print(gw.process("stripe", req, customer_id="cus_123"))
