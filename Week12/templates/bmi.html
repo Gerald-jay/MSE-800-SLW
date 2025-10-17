@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}BMI Calculator{% endblock %}
+{% block content %}
+
+  <section class="card">
+    <h2 class="card-title">BMI Calculator</h2>
+
+    <form method="post" class="form">
+        <div class="grid-2">
+            <label class="form-row">
+            <span class="label">Weight (kg)</span>
+            <input name="weight" type="number" step="0.01" min="0" placeholder="e.g. 68" class="input input-short" value="{{ weight or '' }}">
+            </label>
+        </div>
+        <div class="grid-2">
+            <label class="form-row">
+            <span class="label">Height (m)</span>
+            <input name="height" type="number" step="0.001" min="0" placeholder="e.g. 1.73" class="input input-short" value="{{ height or '' }}">
+            </label>
+        </div>
+        <div class="actions">
+            <button type="submit" class="btn">Calculate BMI</button>
+            <a href="{{ url_for('bmi_form') }}" class="btn link">Reset</a>
+        </div>
+    </form>
+
+
+    {% if error %}
+      <p class="alert danger">{{ error }}</p>
+    {% endif %}
+  </section>
+
+  {% if bmi is defined %}
+  <section class="card">
+    <h2 class="card-title">BMI Calculator Result</h2>
+    <p>Your BMI is: <span class="badge">{{ bmi }}</span></p>
+    <p>You are classified as: <strong>{{ label }}</strong></p>
+    <p class="muted">WHO ranges: &lt;18.5 Underweight · 18.5–24.9 Normal · 25–29.9 Overweight · ≥30 Obesity</p>
+    <p><a href="{{ url_for('bmi_form') }}" class="btn link">Calculate Again</a></p>
+  </section>
+  {% endif %}
+
+{% endblock %}

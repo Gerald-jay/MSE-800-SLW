@@ -57,6 +57,43 @@ def image_post():
     # render template to display image
     return render_template("image.html", image_url=image_url)
 
+# --- BMI Calculator ---
+def classify_bmi(bmi: float) -> str:
+    if bmi < 18.5:
+        return "Underweight"
+    if bmi < 25:
+        return "Normal weight"
+    if bmi < 30:
+        return "Overweight"
+    return "Obesity"
+
+@app.get("/bmi")
+def bmi_form():
+    # just render the form
+    return render_template("bmi.html")
+
+@app.post("/bmi")
+def bmi_post():
+    w = (request.form.get("weight") or "").strip()
+    h = (request.form.get("height") or "").strip()
+
+    # basic validation
+    try:
+        weight = float(w)
+        height = float(h)
+        assert weight > 0 and height > 0
+    except Exception:
+        return render_template("bmi.html", error="Please enter valid positive numbers."), 400
+    if height > 10:  # if height is over 10, assume it's in cm
+        height = height / 100
+    bmi = round(weight / (height ** 2), 2)
+    label = classify_bmi(bmi)
+    return render_template("bmi.html",
+                           weight=weight,
+                           height=height,
+                           bmi=bmi,
+                           label=label)
+
 @app.get("/api/ping")
 def api_ping():
     return jsonify({"status": "ok"})
