@@ -24,3 +24,9 @@ def test_todo_crud():
     # ensure gone
     r = client.get(f"/api/todos/{tid}")
     assert r.status_code == 404
+
+def test_cal_route():
+    client = app.test_client()
+    r = client.get("/cal/12")
+    assert r.status_code == 200
+    assert "The square of 12 is 144" in r.get_data(as_text=True)

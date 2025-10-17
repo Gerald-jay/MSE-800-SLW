@@ -6,3 +6,15 @@ main { padding: 16px; }
 pre { background: #f3f3f3; padding: 8px; overflow:auto; }
 .error { color: #b00020; }
 .ok { color: #0a7d07; }
+.calc {
+  background: #f4faff;
+  border-left: 4px solid #0091ea;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+h2 {
+  color: #005ea8;
+}
+p strong {
+  color: #00796b;
+}

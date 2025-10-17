@@ -38,6 +38,11 @@ def echo_post():
         return render_template("echo.html", error="Please type a message."), 400
     return render_template("echo.html", echoed=msg)
 
+@app.get("/cal/<int:number>")
+def show_square(number: int):
+    result = number ** 2
+    return render_template("cal.html", number=number, result=result)
+
 @app.get("/api/ping")
 def api_ping():
     return jsonify({"status": "ok"})

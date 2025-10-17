@@ -11,6 +11,7 @@
     <h1>Flask Demo</h1>
     <nav>
       <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('show_square', number=12) }}">Calc 12²</a>
       <a href="{{ url_for('hello', name='Eason') }}">Hello</a>
       <a href="{{ url_for('echo_form') }}">Echo</a>
     </nav>
@@ -19,7 +20,7 @@
     {% block content %}{% endblock %}
   </main>
   <footer>
-    <small>Built with Flask • {{ request.path }}</small>
+    <small>Built with Flask • {{ request.path }} • 2025 by Gerald</small>
   </footer>
 </body>
 </html>
