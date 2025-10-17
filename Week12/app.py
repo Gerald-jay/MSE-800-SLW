@@ -43,6 +43,20 @@ def show_square(number: int):
     result = number ** 2
     return render_template("cal.html", number=number, result=result)
 
+@app.get("/image")
+def image_form():
+    # show form to input image URL
+    return render_template("image.html")
+
+@app.post("/image")
+def image_post():
+    # get image URL from form
+    image_url = request.form.get("image_url", "").strip()
+    if not image_url:
+        return render_template("image.html", error="Please enter a valid image URL."), 400
+    # render template to display image
+    return render_template("image.html", image_url=image_url)
+
 @app.get("/api/ping")
 def api_ping():
     return jsonify({"status": "ok"})

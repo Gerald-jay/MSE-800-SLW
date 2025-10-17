@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Image Loader{% endblock %}
+{% block content %}
+  <h2>Image Loader</h2>
+  <p>Enter an image URL below and click “Load Image”.</p>
+
+  <form method="post" style="margin-bottom:20px;">
+    <input type="url" name="image_url" placeholder="https://example.com/image.jpg" required style="width:70%;">
+    <button type="submit">Load Image</button>
+  </form>
+
+  {% if error %}
+    <p class="error">{{ error }}</p>
+  {% endif %}
+
+  {% if image_url %}
+    <div class="img-box">
+      <h3>Loaded Image:</h3>
+      <img src="{{ image_url }}" alt="User provided image" style="max-width:100%;border:1px solid #ccc;padding:5px;">
+    </div>
+  {% endif %}
+{% endblock %}

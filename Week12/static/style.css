@@ -18,3 +18,9 @@ h2 {
 p strong {
   color: #00796b;
 }
+.img-box {
+  background: #fafafa;
+  border: 1px dashed #bbb;
+  padding: 12px;
+  margin-top: 12px;
+}
