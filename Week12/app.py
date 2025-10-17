@@ -14,8 +14,8 @@ class Todo:
 
 TODOS: List[Todo] = []  # Initially empty
 TODOS = [
-    Todo(id=1, text="Buy milk"),
-    Todo(id=2, text="Read Python book")
+    Todo(id=1, text="I'm a todo item"),
+    Todo(id=2, text="Hi, that's another one"),
 ]
 _next_id = 3
 
