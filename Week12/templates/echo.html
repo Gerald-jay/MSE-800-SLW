@@ -1,11 +1,23 @@
 {% extends "base.html" %}
 {% block title %}Echo{% endblock %}
 {% block content %}
-  <h2>Echo Form</h2>
-  <form method="post">
-    <label>Message: <input name="message" placeholder="Type something"></label>
-    <button type="submit">Echo</button>
-  </form>
-  {% if error %}<p class="error">{{ error }}</p>{% endif %}
-  {% if echoed %}<p class="ok">You said: “{{ echoed }}”</p>{% endif %}
+  <section class="card">
+    <h2 class="card-title">Echo Form</h2>
+    <form method="post" class="form">
+      <label class="form-row">
+        <span class="label">Message</span>
+        <input name="message" placeholder="Type something" class="input">
+      </label>
+      <div class="actions">
+        <button type="submit" class="btn">Echo</button>
+      </div>
+    </form>
+
+    {% if error %}
+      <p class="alert danger">{{ error }}</p>
+    {% endif %}
+    {% if echoed %}
+      <p class="alert success">You said: “<strong>{{ echoed }}</strong>”.</p>
+    {% endif %}
+  </section>
 {% endblock %}

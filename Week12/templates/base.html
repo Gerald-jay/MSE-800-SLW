@@ -7,21 +7,25 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <header>
-    <h1>Flask Demo</h1>
-    <nav>
-      <a href="{{ url_for('index') }}">Home</a>
-      <a href="{{ url_for('show_square', number=12) }}">Calc</a>
-      <a href="{{ url_for('image_form') }}">Image Loader</a>
-      <a href="{{ url_for('hello', name='Eason') }}">Hello</a>
-      <a href="{{ url_for('echo_form') }}">Echo</a>
-    </nav>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="brand">Flask Demo</h1>
+      <nav class="nav">
+        <a href="{{ url_for('index') }}" class="nav-link {% if request.endpoint == 'index' %}active{% endif %}">Home</a>
+        <a href="{{ url_for('show_square', number=12) }}" class="nav-link {% if request.endpoint == 'show_square' %}active{% endif %}">Calc</a>
+        <a href="{{ url_for('image_form') }}" class="nav-link {% if request.endpoint in ['image_form', 'image_post'] %}active{% endif %}">Image</a>
+        <a href="{{ url_for('hello', name='Nina') }}" class="nav-link {% if request.endpoint == 'hello' %}active{% endif %}">Hello</a>
+        <a href="{{ url_for('echo_form') }}" class="nav-link {% if request.endpoint in ['echo_form', 'echo_post'] %}active{% endif %}">Echo</a>
+      </nav>
+    </div>
   </header>
   <main>
     {% block content %}{% endblock %}
   </main>
-  <footer>
-    <small>Built with Flask • {{ request.path }} • 2025 by Gerald</small>
+  <footer class="site-footer">
+    <div class="container">
+      <small>Built with Flask • {{ request.path }} • 2025 by Gerald</small>
+    </div>
   </footer>
 </body>
 </html>
