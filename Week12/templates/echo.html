@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Echo{% endblock %}
+{% block content %}
+  <h2>Echo Form</h2>
+  <form method="post">
+    <label>Message: <input name="message" placeholder="Type something"></label>
+    <button type="submit">Echo</button>
+  </form>
+  {% if error %}<p class="error">{{ error }}</p>{% endif %}
+  {% if echoed %}<p class="ok">You said: “{{ echoed }}”</p>{% endif %}
+{% endblock %}

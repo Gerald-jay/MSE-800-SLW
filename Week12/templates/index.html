@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Home · Flask{% endblock %}
+{% block content %}
+  <h2>Todo List (in-memory)</h2>
+  {% if todos %}
+    <ul>
+      {% for t in todos %}
+        <li>#{{ t.id }} — {{ t.text }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No todos yet. Use the API to add some.</p>
+  {% endif %}
+{% endblock %}

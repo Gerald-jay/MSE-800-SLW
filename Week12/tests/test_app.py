@@ -1,0 +1,26 @@
+from app import app
+
+def test_ping():
+    client = app.test_client()
+    r = client.get("/api/ping")
+    assert r.status_code == 200
+    assert r.get_json()["status"] == "ok"
+
+def test_todo_crud():
+    client = app.test_client()
+    # create
+    r = client.post("/api/todos", json={"text": "Read book"})
+    assert r.status_code == 201
+    tid = r.get_json()["id"]
+    # list
+    r = client.get("/api/todos")
+    assert any(x["id"] == tid for x in r.get_json())
+    # get single
+    r = client.get(f"/api/todos/{tid}")
+    assert r.status_code == 200
+    # delete
+    r = client.delete(f"/api/todos/{tid}")
+    assert r.status_code == 204
+    # ensure gone
+    r = client.get(f"/api/todos/{tid}")
+    assert r.status_code == 404
