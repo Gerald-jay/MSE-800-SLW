@@ -13,7 +13,11 @@ class Todo:
     text: str
 
 TODOS: List[Todo] = []  # Initially empty
-_next_id = 1
+TODOS = [
+    Todo(id=1, text="Buy milk"),
+    Todo(id=2, text="Read Python book")
+]
+_next_id = 3
 
 @app.get("/")
 def index():
