@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Django Welcome</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+  <header>
+    <h1 class="title">Welcome Page</h1>
+    <nav class="nav">
+      <a href="/welcome/Eason/">Home</a>
+      <a href="/welcome/Student/">Example</a>
+    </nav>
+  </header>
+
+  <main class="content">
+    <h2>Hello, {{ name }}!</h2>
+    <p>This is your first Django page styled with CSS.</p>
+  </main>
+
+  <footer class="footer">
+    <small>© 2025 Gerald | Django</small>
+  </footer>
+</body>
+</html>

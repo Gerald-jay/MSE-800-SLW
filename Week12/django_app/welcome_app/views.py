@@ -1,8 +1,8 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 
 def welcome(request, name):
     """
-    A simple Django view that takes a name from the URL
-    and returns a personalized welcome message.
+    A simple Django view that renders a styled page
+    with green background and red text.
     """
-    return HttpResponse(f"<h1>Welcome {name} to Django!</h1>")
+    return render(request, "welcome.html", {"name": name})
