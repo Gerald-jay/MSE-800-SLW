@@ -10,8 +10,8 @@
   <header>
     <h1 class="title">Welcome Page</h1>
     <nav class="nav">
-      <a href="/welcome/Eason/">Home</a>
-      <a href="/welcome/Student/">Example</a>
+      <a href="/welcome/Eason/" class="nav-link {% if request.path == '/welcome/Eason/' %}active{% endif %}">Home</a>
+      <a href="/welcome/Student/" class="nav-link {% if request.path == '/welcome/Student/' %}active{% endif %}">Example</a>
     </nav>
   </header>
 

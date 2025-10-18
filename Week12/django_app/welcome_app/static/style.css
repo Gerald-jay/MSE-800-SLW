@@ -41,3 +41,29 @@ header {
   background: #145a32;
   color: white;
 }
+.nav {
+  margin: 10px 0;
+  text-align: center;
+}
+
+.nav-link {
+  display: inline-block;
+  margin: 0 10px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: red;
+  background: #d9f7be;
+  transition: background 0.2s ease;
+}
+
+.nav-link:hover {
+  background: #b7eb8f;
+}
+
+.nav-link.active {
+  background: #52c41a;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
