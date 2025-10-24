@@ -3,25 +3,25 @@ from google import genai
 import os
 from typing import List, Optional, Any
 
-# 设置密钥
+# Set API key
 os.environ["GOOGLE_API_KEY"] = ""
 
-# 创建客户端
+# Create client
 client = genai.Client()
 
 def _extract_text(resp: Any) -> Optional[str]:
     """
-    兼容不同版本 google-genai 返回结构的安全取文方法。
-    优先尝试便捷字段，然后回退到 candidates -> content.parts[].text。
+    Compatible method for extracting text from different versions of google-genai response structures.
+    Try convenient attributes first, then fallback to candidates -> content.parts[].text.
     """
-    # 一些版本有便捷属性 / Some versions have convenient attributes
+    # Some versions have convenient attributes
     for attr in ("output_text", "text"):
         if hasattr(resp, attr):
             val = getattr(resp, attr)
             if val:
                 return val
 
-    # 通用结构 / General structure
+    # General structure
     candidates: List = getattr(resp, "candidates", None) or []
     for c in candidates:
         content = getattr(c, "content", None)
