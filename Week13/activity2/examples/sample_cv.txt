@@ -5,7 +5,7 @@ Summary
 Software developer with 10+ years experience in building web apps. Interested in backend and data-intensive services.
 
 Skills
-JAVA, Python, JavaScript, React, Flask, SQL (PostgreSQL), Docker, Git
+Java, Python, JavaScript, React, Flask, SQL (PostgreSQL), Docker, Git
 
 Experience
 Software Developer, Acme Ltd (2022–present)
