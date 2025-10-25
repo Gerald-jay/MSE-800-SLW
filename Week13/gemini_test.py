@@ -6,9 +6,6 @@ from typing import List, Optional, Any
 # Set API key
 os.environ["GOOGLE_API_KEY"] = ""
 
-# Create client
-client = genai.Client()
-
 def _extract_text(resp: Any) -> Optional[str]:
     """
     Compatible method for extracting text from different versions of google-genai response structures.
