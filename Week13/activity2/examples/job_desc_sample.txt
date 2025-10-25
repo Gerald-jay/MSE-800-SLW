@@ -1,0 +1,1 @@
+We are seeking a Backend Engineer with strong Python experience, production Flask/FastAPI, SQL/NoSQL, and cloud deployment on GCP or AWS. Bonus: vector databases, LLM app experience, CI/CD.
