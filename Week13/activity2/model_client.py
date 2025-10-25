@@ -8,11 +8,11 @@ load_dotenv()
 DEFAULT_MODEL = "gemini-2.0-flash"
 
 def get_client(api_key: Optional[str] = None) -> genai.Client:
-    # 如果函数没有传入，就从环境变量里取 / if not provided, get from environment variable
+    # If not provided, get from environment variable
     api_key = api_key or os.getenv("GOOGLE_API_KEY")
 
     if not api_key:
-        raise ValueError("❌ Missing GOOGLE_API_KEY. Please set it in .env or environment variables.")
+        raise ValueError("Missing GOOGLE_API_KEY. Please set it in .env or environment variables.")
 
     return genai.Client(api_key=api_key)
 
