@@ -7,14 +7,14 @@ from google import genai
 
 load_dotenv()
 
-# 读取 API Key：优先参数，其次环境变量
+# Read from environment variable if not provided
 def get_client(api_key: Optional[str] = None) -> genai.Client:
     key = api_key or os.getenv("GOOGLE_API_KEY")
     if not key:
         raise ValueError("Missing GOOGLE_API_KEY. Set env var or pass --api_key.")
     return genai.Client(api_key=key)
 
-# 你的基础提示词（Activity 1 的业务流：基于天数/城市/年龄给每日≤3个活动，含名称/地址/描述）
+# Your base prompt (from Activity 1)
 BASE_PROMPT = """You are a professional itinerary recommender. Provide an itinerary recommendation based on user data.
 
 User Details:
@@ -28,7 +28,7 @@ Output requirements:
 - For each activity include: place name, address, and a short description.
 """
 
-# 正向（positive）约束：明确“要做什么/更偏好什么”
+# Guidance on preferred content
 POSITIVE_GUIDANCE = """Style & policy (positive):
 - Prioritize free/low-cost highlights, local markets, and public viewpoints.
 - Prefer walkable clusters; minimize backtracking.
@@ -36,7 +36,7 @@ POSITIVE_GUIDANCE = """Style & policy (positive):
 - Balance culture, nature, and food; keep language concise and practical.
 """
 
-# 反向（negative）约束：明确“不要什么/避免什么”
+# Negative constraints
 NEGATIVE_CONSTRAINTS = """Constraints (negative):
 - Do NOT include more than three activities per day.
 - Avoid unsafe or illegal activities.
@@ -49,7 +49,7 @@ def build_prompt(days: int, city: str, age: int, mode: str) -> str:
     if mode == "positive":
         return f"{base}\n{POSITIVE_GUIDANCE}\n{NEGATIVE_CONSTRAINTS}\nRespond in English."
     elif mode == "negative":
-        # 反向示例：强调要避免的内容+给出最小化输出要求
+        # Negative example: emphasize what to avoid + minimize output requirements
         return f"""{base}
 Only return an itinerary that strictly avoids:
 - more than three activities/day
@@ -94,7 +94,6 @@ def main():
     print("\n=== Negative Prompt Result (saved to outputs/itinerary_negative.md) ===\n")
     print("\n".join(neg_text.splitlines()[:40]))
 
-    # 同步把两个实际提示词也存档，便于作业提交展示
     (args.outdir / "prompt_positive.txt").write_text(pos_prompt, encoding="utf-8")
     (args.outdir / "prompt_negative.txt").write_text(neg_prompt, encoding="utf-8")
 
